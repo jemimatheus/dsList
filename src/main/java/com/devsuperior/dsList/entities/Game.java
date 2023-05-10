@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_games")
-public class Games {
+@Table(name = "tb_game")
+public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,15 +17,17 @@ public class Games {
     private  String plataforma;
     private Double pontuacao;
     private  String imgUrl;
+    @Column(columnDefinition ="TEXT")
     private String descCurta;
+    @Column(columnDefinition ="TEXT")
     private String descLonga;
 
 
-    public Games (){
+    public Game(){
 
     }
 
-    public Games(Long id, String titulo, Integer ano, String genero, String plataforma, Double pontuacao, String imgUrl, String descCurta, String descLonga ) {
+    public Game(Long id, String titulo, Integer ano, String genero, String plataforma, Double pontuacao, String imgUrl, String descCurta, String descLonga ) {
 
         this.id = id;
         this.titulo = titulo;
@@ -116,8 +118,8 @@ public class Games {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Games games = (Games) o;
-        return Objects.equals(id, games.id);
+        Game game = (Game) o;
+        return Objects.equals(id, game.id);
     }
 
     @Override
