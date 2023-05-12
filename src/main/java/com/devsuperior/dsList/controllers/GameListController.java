@@ -3,8 +3,6 @@ package com.devsuperior.dsList.controllers;
 import com.devsuperior.dsList.dto.GameDTO;
 import com.devsuperior.dsList.dto.GameListDTO;
 import com.devsuperior.dsList.dto.GameMinDTO;
-import com.devsuperior.dsList.entities.Game;
-import com.devsuperior.dsList.services.GameListService;
 import com.devsuperior.dsList.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +14,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/games")
-public class GameController {
+public class GameListController {
 
     @Autowired
-    private GameListService gameListService;
+    private GameService gameService;
 
 
-
-    @GetMapping(value = "/lists")
-    public List<GameListDTO> findByAll(){
-        List <GameListDTO> result = gameListService.finAll();
+    @GetMapping(value = "/{id}")
+    public GameDTO findById(@PathVariable  Long id){
+        GameDTO result = gameService.findById(id);
         return result;
     }
+
+    @GetMapping
+    public List<GameMinDTO> findAll(){
+        List<GameMinDTO> result = gameService.findAll();
+        return result;
+    }
+
 
 }
