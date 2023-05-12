@@ -10,6 +10,7 @@ public class GameMinDTO {
     private String titulo;
     private  Integer ano;
     private  String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String descCurta;
 
 
